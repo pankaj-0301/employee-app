@@ -1,4 +1,4 @@
-# EmployWise Employee Management System
+#  Employee Management System
 
 A Spring Boot application for employee management with CouchDB as the database.
 
