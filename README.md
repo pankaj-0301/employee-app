@@ -27,7 +27,7 @@ cd employee-management
 
 2. Update application.properties with your CouchDB credentials:
 ```properties
-couchdb.url=http://localhost:5984
+couchdb.url=http://localhost:5984  or hosted url
 couchdb.username=your_username
 couchdb.password=your_password
 couchdb.database=employwise_db
