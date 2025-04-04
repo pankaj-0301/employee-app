@@ -236,6 +236,9 @@ The application will start on port 8080 by default.
 }
 ```
 - **Response**:
+
+- ![image](https://github.com/user-attachments/assets/444a3b5a-73eb-4011-ab29-acef5b26c43e)
+
 ```json
 {
   "id": "generated-uuid",
