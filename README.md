@@ -27,18 +27,18 @@ cd employee-management
 
 2. Update application.properties with your CouchDB credentials:
 ```properties
-couchdb.url=http://localhost:5984  or hosted url
+couchdb.url=https://couchdb-latest-tr07.onrender.com
 couchdb.username=your_username
 couchdb.password=your_password
 couchdb.database=employwise_db
 ```
 
-3. If implementing Advanced Level, update the email configuration:
+3. Update the email configuration for Advanced Level:
 ```properties
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
-spring.mail.username=your_new_email@gmail.com
-spring.mail.password=your_app_password
+spring.mail.username=empolyeewiseassignment@gmail.com
+spring.mail.password=your_16_digit_app_password
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
 ```
@@ -50,7 +50,7 @@ spring.mail.properties.mail.smtp.starttls.enable=true
    - For Ubuntu: `sudo apt-get install couchdb`
 
 2. Create a new database named 'employwise_db' in CouchDB:
-   - Open CouchDB dashboard (usually at http://localhost:5984/_utils)
+   - Open CouchDB dashboard (at https://couchdb-latest-tr07.onrender.com/_utils/#/database/employwise_db/_all_docs)
    - Go to Databases -> Create Database -> Name: employwise_db
 
 ## Running the Application
@@ -177,6 +177,7 @@ The application will start on port 8080 by default.
   - `size` (default: 10): Number of employees per page
   - `sortBy` (default: "employeeName"): Field to sort by
   - `sortDirection` (default: "asc"): Sort direction (asc or desc)
+- **Example URL**: `/api/employees/paginated?page=0&size=2&sortBy=employeeName&sortDirection=asc`
 - **Response**:
 ```json
 {
@@ -198,13 +199,13 @@ The application will start on port 8080 by default.
       "empty": false
     },
     "pageNumber": 0,
-    "pageSize": 10,
+    "pageSize": 2,
     "offset": 0,
     "paged": true,
     "unpaged": false
   },
   "totalPages": 5,
-  "totalElements": 42,
+  "totalElements": 10,
   "last": false,
   "first": true,
   "sort": {
@@ -212,36 +213,41 @@ The application will start on port 8080 by default.
     "unsorted": false,
     "empty": false
   },
-  "numberOfElements": 10,
-  "size": 10,
+  "numberOfElements": 2,
+  "size": 2,
   "number": 0,
   "empty": false
 }
 ```
 
+### Advanced Level APIs
+
+#### 1. Add Employee with Email Notification
+- **URL**: `/api/employees`
+- **Method**: `POST`
+- **Request Body**:
+```json
+{
+  "employeeName": "New Employee",
+  "phoneNumber": "1234567890",
+  "email": "new.employee@example.com",
+  "reportsTo": "e5f50ced-9c7c-4879-ae34-6b3f66180170",
+  "profileImage": "employee-profile.jpg"
+}
+```
+- **Response**:
+```json
+{
+  "id": "generated-uuid",
+  "message": "Employee added successfully and notification email sent to manager"
+}
+```
+- **Email Notification**: When a new employee is added, an email will be automatically sent from **empolyeewiseassignment@gmail.com** to the manager's email address with the following content: "[Employee Name] will now work under you. Mobile number is [Employee Phone Number] and email is [Employee Email]".
+
 ## Deployment
 
-The application can be deployed to free platforms like Heroku:
+The application is deployed and accessible at:
+- **Hosted URL**: https://web-production-3e476.up.railway.app/
 
-1. Create a Heroku account and install the Heroku CLI
-2. Create a new Heroku app:
-```bash
-heroku create employwise-app
-```
-
-3. Set up environment variables:
-```bash
-heroku config:set COUCHDB_URL=your_couchdb_url
-heroku config:set COUCHDB_USERNAME=your_username
-heroku config:set COUCHDB_PASSWORD=your_password
-heroku config:set COUCHDB_DATABASE=employwise_db
-heroku config:set SPRING_MAIL_USERNAME=your_email@gmail.com
-heroku config:set SPRING_MAIL_PASSWORD=your_app_password
-```
-
-4. Deploy the application:
-```bash
-git push heroku main
-```
-
-The application will be available at: https://employ
+You can access the CouchDB database at:
+- **CouchDB URL**: https://couchdb-latest-tr07.onrender.com/_utils/#/database/employwise_db/_all_docs
