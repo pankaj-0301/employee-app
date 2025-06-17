@@ -37,7 +37,7 @@ couchdb.database=employwise_db
 ```properties
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
-spring.mail.username=empolyeewiseassignment@gmail.com
+spring.mail.username=t@gmail.com
 spring.mail.password=your_16_digit_app_password
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
@@ -235,17 +235,13 @@ The application will start on port 8080 by default.
   "profileImage": "employee-profile.jpg"
 }
 ```
-- **Response**:
 
-- ![image](https://github.com/user-attachments/assets/444a3b5a-73eb-4011-ab29-acef5b26c43e)
-
-```json
 {
   "id": "generated-uuid",
   "message": "Employee added successfully and notification email sent to manager"
 }
 ```
-- **Email Notification**: When a new employee is added, an email will be automatically sent from **empolyeewiseassignment@gmail.com** to the manager's email address with the following content: "[Employee Name] will now work under you. Mobile number is [Employee Phone Number] and email is [Employee Email]".
+- **Email Notification**: When a new employee is added, an email will be automatically sent from **t@gmail.com** to the manager's email address with the following content: "[Employee Name] will now work under you. Mobile number is [Employee Phone Number] and email is [Employee Email]".
 
 ## Deployment
 
